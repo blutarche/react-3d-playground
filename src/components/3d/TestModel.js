@@ -3,11 +3,9 @@ import { useLoader } from 'react-three-fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
 
-import testTextureGLTF from 'files/3d/test-texture.gltf'
-
 export const TestModel = props => {
   const group = useRef()
-  const gltf = useLoader(GLTFLoader, testTextureGLTF, loader => {
+  const gltf = useLoader(GLTFLoader, '/3d/test-texture.gltf', loader => {
     const dracoLoader = new DRACOLoader()
     dracoLoader.setDecoderPath('/draco-gltf/')
     loader.setDRACOLoader(dracoLoader)

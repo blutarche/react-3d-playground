@@ -1,54 +1,37 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
+import styled from '@emotion/styled'
+import { useState } from 'react'
 
-import { Suspense } from 'react'
-import { Canvas } from 'react-three-fiber'
-import { TestModel } from 'components/3d/TestModel'
-import { Control3D } from 'components/3d/Control3D'
-import { Color } from 'three'
+import { TestThreeJs } from 'components/3d/TestThreeJs'
+import { TestBabylon } from 'components/3d/TestBabylon'
+
+const Button = styled.div`
+  padding: 16px 32px;
+  border: 1px solid #ddd;
+  margin: 16px;
+`
 
 export const App = () => {
+  const [showBabylon, setShowBabylon] = useState(true)
   return (
     <div
       css={css`
         canvas {
-          height: 100vh;
+          width: 100vw;
+          height: calc(100vh - 80px);
         }
       `}
     >
-      <Canvas
-        style={{
-          background:
-            'radial-gradient(at 50% 70%, #00000033 20%, #00000000 60%)'
-        }}
-        gl={{
-          gammaFactor: 2.2,
-          gammaOutput: true,
-          physicallyCorrectLights: true
-        }}
+      <div
+        css={css`
+          display: flex;
+        `}
       >
-        <ambientLight intensity={0.3} color={new Color('404040')} />
-        {/* <directionalLight
-          intensity={2}
-          position={[0, 15, 0]}
-          color={new Color('404040')}
-        /> */}
-        <hemisphereLight
-          intensity={2}
-          position={[0, 1, 0]}
-          color={new Color('404040')}
-        />
-        <Suspense fallback={null}>
-          <TestModel />
-        </Suspense>
-        <Control3D
-          autoRotate
-          enablePan={false}
-          enableDamping
-          dampingFactor={0.5}
-          rotateSpeed={1}
-        />
-      </Canvas>
+        <Button onClick={() => setShowBabylon(true)}>Babylon.js</Button>
+        <Button onClick={() => setShowBabylon(false)}>Three.js</Button>
+      </div>
+      {showBabylon ? <TestBabylon /> : <TestThreeJs />}
     </div>
   )
 }
