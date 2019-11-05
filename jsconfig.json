@@ -1,0 +1,8 @@
+{
+  "target": "es2017",
+  "compilerOptions": {
+    "baseUrl": "src"
+  },
+  "allowSyntheticDefaultImports": true,
+  "exclude": ["node_modules", "dist", "tmp"]
+}

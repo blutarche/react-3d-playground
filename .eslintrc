@@ -1,0 +1,33 @@
+{
+  "parser": "babel-eslint",
+  "plugins": ["react", "react-hooks"],
+  "rules": {
+    "react/display-name": 1,
+    "react/no-did-mount-set-state": 0,
+    "react/no-did-update-set-state": 0,
+    "comma-dangle": 0,
+    "space-before-function-paren": 0,
+    "object-curly-newline": 0,
+    "linebreak-style": 0,
+    "arrow-parens": 0,
+    "no-void": 0,
+    "indent": 0,
+    "prefer-template": 0,
+    "no-use-before-define": 0,
+    "no-unused-vars": "warn",
+    "react-hooks/rules-of-hooks": "error",
+    "import/prefer-default-export": 0
+  },
+  "globals": {
+    "Raven": true,
+    "liff": true
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"]
+      }
+    }
+  },
+  "extends": "react-tools"
+}
